@@ -35,9 +35,6 @@ jobs:
     needs: automated-tests
     runs-on: ubuntu-latest
     steps:
-    - name: Build Application
-      uses: actions/setup-go@v3
-      with:
-        go-version: 1.19
+    - uses: actions/checkout@v3
     - name: Build
       run: go build -v main.go
