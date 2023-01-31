@@ -11,7 +11,7 @@ on:
 
 jobs:
 
-  build:
+  automated-tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -29,6 +29,15 @@ jobs:
     
     - name: Test
       run: go test -v main_test.go
-
+  
+  
+  build:
+    needs: automated-tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build Application
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.19
     - name: Build
       run: go build -v main.go
