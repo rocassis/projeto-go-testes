@@ -19,3 +19,12 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USR }}
         password: ${{ secrets.DOCKER_PWD }}
+
+    - name: push Docker Image
+      uses: docker/build-push-action@v4.0.0
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: rocassis/go_ci_alura_course:${{ github.ref_name }}
+        
