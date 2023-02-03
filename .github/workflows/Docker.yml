@@ -17,5 +17,5 @@ jobs:
     - name: login Docker
       uses: docker/login-action@v2.1.0
       with:
-        username: rocassis
-        passwor: ${{ }}
+        username: ${{ secrets.DOCKER_USR }}
+        password: ${{ secrets.DOCKER_PWD }}
