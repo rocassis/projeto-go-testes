@@ -21,15 +21,17 @@ jobs:
       DBNAME: root
     strategy:
       matrix:
-        go_version: ['1.18', '1.17', '>=1.18']
-        os: ['ubuntu-latest','ubuntu-18.04']
+#         go_version: ['1.18', '1.17', '>=1.18']
+#         os: ['ubuntu-latest','ubuntu-18.04']
+        go_version: ['1.18']
+        os: ['ubuntu-latest']
     steps:
     - uses: actions/checkout@v3
 
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
-        go-version: ${{ matrix.node_version }}
+        go-version: ${{ matrix.go_version }}
         os: ${{ matrix.os }}
 
     - name: Build-DB
@@ -49,8 +51,8 @@ jobs:
     needs: automated-tests
     strategy:
       matrix:
-        go_version: ['1.18', '1.17', '>=1.18']
-        os: ['ubuntu-latest','ubuntu-18.04']
+        # os: ['ubuntu-latest','ubuntu-18.04']
+        os: ['ubuntu-latest']
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
